@@ -90,3 +90,6 @@ images/
 frontend/src/assets/images/
 
 /frontend/src/assets/images/
+
+backend/data/model_data/pyg_graph.pt
+
