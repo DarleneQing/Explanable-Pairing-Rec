@@ -56,7 +56,7 @@ const isMinimized = ref(true);
   top: 5px;
   left: 10px;
   z-index: 1001;
-  background-color: var(--button-color1);
+  background-color: var(--window-color3);
   padding: 10px;
   border-radius: 15px;
   transition: all 0.3s ease;
@@ -134,7 +134,7 @@ const isMinimized = ref(true);
 }
 
 h1 {
-  color: var(--button-color1);
+  color: var(--window-color3);
   text-align: center;
   margin: 0;
 }
@@ -189,7 +189,7 @@ h1 {
 .close-button {
   margin-top: 15px;
   padding: 8px 16px;
-  background-color: var(--button-color1);
+  background-color: var(--window-color3);
   color: white;
   border: none;
   border-radius: 4px;

@@ -470,7 +470,7 @@ const getZoomLevel = () => {
 }
 
 .slider .handle:hover {
-  fill: var(--button-color2);
+  fill: var(--window-color4);
 }
 
 .slider text {
