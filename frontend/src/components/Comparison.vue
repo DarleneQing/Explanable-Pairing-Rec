@@ -7,12 +7,12 @@ const emit = defineEmits<{
   close: []
 }>();
 
-// Get the two item instances
-const item1 = Item.ITEM_529180002;
-const item2 = Item.ITEM_830185001;
-const rec1 = Rec.RECS1;
+// Get the item instances
+const item1 = Item.ITEM_529180002; // Query item
+const rec1 = Rec.RECS1; // Recommended item (now extends Item, so has all item properties)
+
 // Create an array of items to avoid duplication in template
-const items = [item1, item2];
+const items = [item1, rec1];
 
 // Function to handle close button click
 const handleClose = () => {
@@ -20,27 +20,30 @@ const handleClose = () => {
 };
 
 // Function to get recommendation score for a given attribute and item
-const getRecScore = (item: Item, attribute: string): number | null => {
-  // Only show scores for item2 (ITEM_830185001) since rec1 corresponds to it
-  if (item.article_id !== item2.article_id) {
+const getRecScore = (item: Item | Rec, attribute: string): number | null => {
+  // Only show scores for the recommended item (rec1)
+  if (item.article_id !== rec1.article_id) {
     return null;
   }
   
+  // Cast to Rec to access recommendation properties
+  const recItem = item as Rec;
+  
   switch (attribute) {
     case 'color':
-      return rec1.color_importance;
+      return recItem.color_importance;
     case 'luminance':
-      return rec1.luminance_importance;
+      return recItem.luminance_importance;
     case 'appearance':
-      return rec1.appearance_importance;
+      return recItem.appearance_importance;
     case 'fabric':
-      return rec1.fabric_importance;
+      return recItem.fabric_importance;
     case 'neckline':
-      return rec1.neckline_importance;
+      return recItem.neckline_importance;
     case 'sleeve':
-      return rec1.sleeve_importance;
+      return recItem.sleeve_importance;
     case 'length':
-      return rec1.length_importance;
+      return recItem.length_importance;
     default:
       return null;
   }
@@ -193,7 +196,7 @@ const getRecScore = (item: Item, attribute: string): number | null => {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background: var(--button-color1);
+    background: var(--window-color3);
     color: white;
     border-bottom: 1px solid var(--window-color1);
 }
@@ -291,7 +294,7 @@ h3 {
 }
 
 .score-fill {
-    background: var(--button-color1);
+    background: var(--window-color3);
     height: 100%;
     border-radius: 6px;
     transition: width 0.6s ease;
@@ -371,7 +374,7 @@ h4 {
 .importance-score {
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--button-color1);
+    color: var(--window-color3);
     background: rgba(var(--button-color1-rgb, 76, 175, 80), 0.1);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
