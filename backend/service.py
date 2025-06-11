@@ -1,6 +1,6 @@
 from .repository import Repository
 from .models import Session, Item, RecItem
-from typing import Optional
+from typing import Optional, Dict, Any
 
 class Service:
     def __init__(self, repository: Repository):
@@ -13,6 +13,21 @@ class Service:
     def get_session(self, session_id: str) -> Optional[Session]:
         """Get a session by ID"""
         return self._repository.get_session(session_id)
+    
+    def update_session(self, session_id: str, update_data: Dict[str, Any]) -> Optional[Session]:
+        """Update a session with new data"""
+        session = self._repository.get_session(session_id)
+        if session is None:
+            return None
+        
+        # Update session fields
+        for field, value in update_data.items():
+            if hasattr(session, field) and value is not None:
+                setattr(session, field, value)
+        
+        # Save updated session
+        self._repository.update_session(session)
+        return session
     
     def delete_session(self, session_id: str) -> bool:
         """Delete a session"""

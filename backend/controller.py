@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 from .service import Service
 from .models import Item, Session, RecItem
 from .dependencies import get_service
-from typing import List
+from typing import List, Dict, Any
 
 router = APIRouter()
 
@@ -86,3 +86,14 @@ async def get_recommendations(session_id: str, service: Service = Depends(get_se
         return recommendations
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+
+@router.put("/session/{session_id}", response_model=Session)
+async def update_session(session_id: str, update_data: Dict[str, Any], service: Service = Depends(get_service)):
+    """Update a session with new data"""
+    try:
+        session = service.update_session(session_id, update_data)
+        if session is None:
+            raise HTTPException(status_code=404, detail="Session not found")
+        return session
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to update session: {str(e)}")
