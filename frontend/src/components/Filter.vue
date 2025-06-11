@@ -114,7 +114,7 @@ onMounted(() => {
   right: 10px;
   max-width: 300px;
   width: auto;
-  background-color: var(--button-color1);
+  background-color: var(--window-color3);
   padding: 10px;
   border-radius: 15px;
   transition: all 0.3s ease;
@@ -196,8 +196,8 @@ h3 {
 .filter-button {
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  background-color: var(--button-color2);
-  border: 2px solid var(--button-color2);
+  background-color: var(--window-color4);
+  border: 2px solid var(--window-color4);
   cursor: pointer;
   transition: all 0.2s ease;
   font-size: 0.9rem;
