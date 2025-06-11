@@ -1,8 +1,33 @@
 <script setup>
 // TheWelcome component
 import '../assets/base.css';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
+import { onMounted } from 'vue';
 import BackendTest from './BackendTest.vue';
+import { useSessionStore } from '../stores/session';
+
+const sessionStore = useSessionStore();
+const router = useRouter();
+
+// Load any existing session data when component mounts
+onMounted(async () => {
+  await sessionStore.loadStoredSession();
+});
+
+const handleStartClick = async () => {
+  try {
+    // Only create a new session if one doesn't exist
+    if (!sessionStore.session) {
+      await sessionStore.createSession();
+      console.log('Session created successfully:', sessionStore.session);
+    }
+    // Navigate to first-input page to collect user data
+    router.push('/how-it-works');
+  } catch (error) {
+    console.error('Failed to create session:', error);
+    // You might want to show an error message to the user
+  }
+};
 </script>
 
 <template>
@@ -10,9 +35,7 @@ import BackendTest from './BackendTest.vue';
       <h2>Welcome to the application</h2>
   </div>
   <div class="landing-container">
-      <RouterLink to="/rec-board" class="start-link">
-          <button class="start-button">Start</button>
-      </RouterLink>
+      <button @click="handleStartClick" class="start-button">Start</button>
   </div>
   <BackendTest />
   <div>
@@ -56,7 +79,7 @@ import BackendTest from './BackendTest.vue';
 }
 
 .start-button {
-    background-color: var(--button-color1);
+    background-color: var(--window-color3);
     color: white;
     padding: 15px 30px;
     border: none;
