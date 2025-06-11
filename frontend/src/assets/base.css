@@ -1,61 +1,295 @@
-:root{
+:root {
+    /* === COLOR PALETTE === */
+    /* Primary Colors */
     --main-background: #fefae0;
     --color-master: #9656a2;
-    --color-value:#369acc;
+    --color-value: #369acc;
     --graphical-appearance: #95cf92;
     --fabric: #f8e16f;
     --neckline: #f4895f;
     --sleeves: #de324c;
     --length: #6c584c;
-    --item-color: #363737;
-    --button-color1: #a3b18a;
-    --button-color2: #d4a373;
-    --window-color1: #e9edc9;
-    --window-color2: #faedcd;
-    --font-color1: #588157;
     --blobs: #d6d7d7;
+    --item-color: #363737;
+    
+    /* === BALANCED GREEN & BROWNISH CREAM UI PALETTE === */
+    /* Base UI Colors */
+    --window-color3: #a3b18a;      /* Sage green - interactive elements */
+    --window-color4: #d4a373;      /* Warm tan - accent color */
+    --window-color1: #e9edc9;      /* Light green-cream - secondary bg */
+    --window-color2: #faedcd;      /* Light cream - tertiary bg */
+    
+    /* Primary Brand Colors (balancing green and brown) */
+    --brand-primary: #8a9471;      /* Deeper sage green - main brand */
+    --brand-secondary: #c4915c;    /* Rich tan - secondary brand */
+    --brand-accent: var(--window-color4);   /* Warm tan accent */
+    
+    /* UI Background Colors */
+    --ui-bg-primary: #f8f6e8;      /* Very light cream-green */
+    --ui-bg-secondary: var(--window-color1);  /* Light green-cream */
+    --ui-bg-tertiary: var(--window-color2);   /* Light cream */
+    --ui-bg-elevated: #ffffff;     /* Pure white for cards */
+    
+    /* UI Interactive Colors (balanced green-brown) */
+    --ui-interactive: var(--window-color3);     /* Sage green primary */
+    --ui-interactive-hover: #8a9471;            /* Deeper sage on hover */
+    --ui-interactive-light: #b8c4a3;            /* Light sage for subtle interactions */
+    --ui-interactive-brown: var(--window-color4); /* Brown alternative */
+    --ui-interactive-brown-hover: #c2915d;       /* Brown hover */
+    
+    /* Text Colors (coordinated with green-brown balance) */
+    --ui-text-primary: #3d4234;    /* Dark green-brown for primary text */
+    --ui-text-secondary: #6b7055;  /* Medium sage for secondary text */
+    --ui-text-muted: #8a9471;      /* Muted sage for tertiary text */
+    --ui-text-inverse: #ffffff;    /* White text for dark backgrounds */
+    --ui-text-brown: #7a6b54;      /* Brown text alternative */
+    
+    /* Border Colors */
+    --ui-border-light: #e2e6d3;    /* Light green-cream border */
+    --ui-border-medium: #d4d9c4;   /* Medium green-cream border */
+    --ui-border-strong: #c4c9b4;   /* Strong green-cream border */
+    
+    /* Status Colors (adapted to palette) */
+    --ui-success: #7a9471;         /* Sage green success */
+    --ui-warning: var(--window-color4);  /* Tan warning */
+    --ui-error: #b85450;           /* Muted red */
+    --ui-info: #8a9aa3;            /* Blue-grey info */
+    
+    /* Updated semantic mappings */
+    --font-color1: var(--ui-text-secondary);
+    --text-primary: var(--ui-text-primary);
+    --text-secondary: var(--ui-text-secondary);
+    --accent-color: var(--brand-accent);
+    --accent-color-hover: var(--ui-interactive-brown-hover);
+    
+    /* === SEMANTIC COLORS === */
+    --text-primary: var(--ui-text-primary);
+    --text-secondary: var(--ui-text-secondary);
+    --text-muted: var(--ui-text-muted);
+    --text-inverse: var(--ui-text-inverse);
+    
+    --bg-primary: var(--main-background);
+    --bg-secondary: var(--ui-bg-secondary);
+    --bg-tertiary: var(--ui-bg-tertiary);
+    --bg-overlay: rgba(61, 66, 52, 0.4);
+    
+    --border-light: var(--ui-border-light);
+    --border-medium: var(--ui-border-medium);
+    --border-dark: var(--ui-border-strong);
+    
+    --success-color: var(--ui-success);
+    --warning-color: var(--ui-warning);
+    --error-color: var(--ui-error);
+    --info-color: var(--ui-info);
+    
+    /* === SPACING SYSTEM === */
+    --space-xs: 0.25rem;    /* 4px */
+    --space-sm: 0.5rem;     /* 8px */
+    --space-md: 0.75rem;    /* 12px */
+    --space-lg: 1rem;       /* 16px */
+    --space-xl: 1.25rem;    /* 20px */
+    --space-2xl: 1.5rem;    /* 24px */
+    --space-3xl: 2rem;      /* 32px */
+    --space-4xl: 2.5rem;    /* 40px */
+    --space-5xl: 3rem;      /* 48px */
+    
+    /* === TYPOGRAPHY === */
+    --font-family-primary: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-family-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.8rem;     /* 13px */
+    --font-size-base: 0.9rem;   /* 14px */
+    --font-size-md: 1rem;       /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 1.75rem;   /* 28px */
+    --font-size-4xl: 2rem;      /* 32px */
+    
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    --line-height-tight: 1.2;
+    --line-height-normal: 1.4;
+    --line-height-relaxed: 1.6;
+    
+    /* === LAYOUT & COMPONENTS === */
+    --border-radius-sm: 4px;
+    --border-radius-md: 6px;
+    --border-radius-lg: 8px;
+    --border-radius-xl: 10px;
+    --border-radius-2xl: 12px;
+    --border-radius-full: 9999px;
+    
+    --border-width-thin: 1px;
+    --border-width-medium: 2px;
+    --border-width-thick: 3px;
+    
+    /* === SHADOWS === */
+    --shadow-sm: 0 1px 2px rgba(54, 55, 55, 0.05);
+    --shadow-md: 0 2px 8px rgba(54, 55, 55, 0.05);
+    --shadow-lg: 0 4px 12px rgba(54, 55, 55, 0.1);
+    --shadow-xl: 0 8px 32px rgba(54, 55, 55, 0.1);
+    --shadow-overlay: 0 8px 32px rgba(54, 55, 55, 0.1), 0 2px 8px rgba(54, 55, 55, 0.05);
+    
+    /* === TRANSITIONS === */
+    --transition-fast: 0.1s ease;
+    --transition-normal: 0.2s ease;
+    --transition-slow: 0.3s ease;
+    --transition-colors: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    --transition-transform: transform 0.2s ease;
+    --transition-all: all 0.2s ease;
+    
+    /* === Z-INDEX SCALE === */
+    --z-dropdown: 1000;
+    --z-sticky: 1001;
+    --z-modal-backdrop: 1002;
+    --z-modal: 1003;
+    --z-popover: 1004;
+    --z-tooltip: 1005;
+    --z-toast: 1006;
+    --z-comparison-modal: 1009;
+    
+    /* === BREAKPOINTS (for JS usage) === */
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+
+    /* RGB Values for rgba usage */
+    --brand-primary-rgb: 138, 148, 113;
+    --brand-secondary-rgb: 196, 145, 92;
+    --brand-accent-rgb: 212, 163, 115;
+    --ui-interactive-rgb: 163, 177, 138;
+    --ui-interactive-brown-rgb: 212, 163, 115;
+    --ui-text-primary-rgb: 61, 66, 52;
+    --ui-text-secondary-rgb: 107, 112, 85;
+    --window-color3-rgb: 163, 177, 138;
+    --window-color4-rgb: 212, 163, 115;
+    --color-master-rgb: 150, 86, 162;
+    --color-value-rgb: 54, 172, 204;
+    --graphical-appearance-rgb: 149, 207, 146;
+    --fabric-rgb: 248, 225, 111;
+    --neckline-rgb: 244, 137, 95;
+    --sleeves-rgb: 222, 50, 76;
+    --length-rgb: 108, 88, 76;
+    --font-color1-rgb: 107, 112, 85;
+    --item-color-rgb: 54, 55, 55;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
+        /* Dark mode color overrides */
+        --main-background: #1a1a1a;
+        --ui-bg-primary: #242424;
+        --ui-bg-secondary: #2d2d2d;
+        --ui-bg-tertiary: #3a3a3a;
+        --ui-bg-elevated: #404040;
+        --brand-primary: #b8c4a3;
+        --brand-secondary: #d4a373;
+        --brand-accent: #d4a373;
+        --ui-interactive: #b8c4a3;
+        --ui-interactive-hover: #a3b18a;
+        --ui-interactive-brown: #d4a373;
+        --ui-text-primary: #ffffff;
+        --ui-text-secondary: #cccccc;
+        --ui-text-muted: #888888;
+        --window-color1: var(--ui-bg-secondary);
+        --window-color2: var(--ui-bg-tertiary);
+        --window-color3: #b8c4a3;
+        --window-color4: #d4a373;
+        --item-color: #ffffff;
+        --font-color1: var(--ui-text-secondary);
+        --text-primary: var(--ui-text-primary);
+        --text-secondary: var(--ui-text-secondary);
+        --text-muted: var(--ui-text-muted);
+        --bg-overlay: rgba(0, 0, 0, 0.6);
+        --border-light: #404040;
+        --border-medium: #505050;
+        --border-dark: #606060;
+        --blobs: #404040;
     }
-  }
+}
 
-
+/* === RESET & BASE STYLES === */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
 }
 
 body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background-color: var(--main-background);
-  display: flex;
-  margin: 0;
-  padding: 0;
-  transition:
-    color 0.5s,
-    background-color 0.5s;
-  line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    display: flex;
+    margin: 0;
+    padding: 0;
+    transition: var(--transition-colors);
+    line-height: var(--line-height-relaxed);
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
+/* === UTILITY CLASSES === */
+.text-xs { font-size: var(--font-size-xs); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-base { font-size: var(--font-size-base); }
+.text-md { font-size: var(--font-size-md); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-xl { font-size: var(--font-size-xl); }
+.text-2xl { font-size: var(--font-size-2xl); }
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.rounded-sm { border-radius: var(--border-radius-sm); }
+.rounded-md { border-radius: var(--border-radius-md); }
+.rounded-lg { border-radius: var(--border-radius-lg); }
+.rounded-xl { border-radius: var(--border-radius-xl); }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-xl { box-shadow: var(--shadow-xl); }
+
+.transition-fast { transition: var(--transition-fast); }
+.transition-normal { transition: var(--transition-normal); }
+.transition-slow { transition: var(--transition-slow); }
+.transition-colors { transition: var(--transition-colors); }
+.transition-transform { transition: var(--transition-transform); }
+
+/* === SPACING UTILITIES === */
+.p-xs { padding: var(--space-xs); }
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
+
+.m-xs { margin: var(--space-xs); }
+.m-sm { margin: var(--space-sm); }
+.m-md { margin: var(--space-md); }
+.m-lg { margin: var(--space-lg); }
+.m-xl { margin: var(--space-xl); }
+
+.gap-xs { gap: var(--space-xs); }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.gap-xl { gap: var(--space-xl); }
