@@ -19,6 +19,36 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
+      path: '/how-it-works',
+      name: 'how-it-works',
+      component: () => import('../views/HowItWorksView.vue')
+    },
+    {
+      path: '/begin',
+      name: 'begin',
+      component: () => import('../views/BeginView.vue')
+    },
+    {
+      path: '/type',
+      name: 'type',
+      component: () => import('../views/TypeSelectView.vue')
+    },
+    {
+      path: '/color',
+      name: 'color',
+      component: () => import('../views/ColorSelect.vue')
+    },
+    {
+      path: '/appearance',
+      name: 'appearance',
+      component: () => import('../views/AppearanceSelect.vue')
+    },
+    {
+      path: '/item',
+      name: 'item',
+      component: () => import('../views/ItemSelectView.vue')
+    },
+    {
       path: '/rec-board',
       name: 'rec-board',
       component: MainRecView
